@@ -84,12 +84,12 @@ where stream > 1000000000;
     SELECT SUM(comments) AS total_comments
     FROM spotify
     WHERE licensed = TRUE;
-     ```
+   ```
 **4. Find all tracks that belong to the album type `single`.**
  ```
    select track from spotify
    where album_type = 'single';
-     ```
+  ```
 **5. Count the total number of tracks by each artist.**
    ```
       select artist,
@@ -97,7 +97,7 @@ where stream > 1000000000;
       from spotify
       group by artist
       order by 2 desc;
-     ```
+ ```
 
 ### Medium Level
 1. Calculate the average danceability of tracks in each album.
