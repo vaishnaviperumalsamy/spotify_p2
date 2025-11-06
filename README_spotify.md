@@ -118,17 +118,17 @@ order by 1;
    group by 1
    order by 2 desc
    limit 5;
-    ```
+ ```
 **3. List all tracks along with their views and likes where official_video = TRUE.**
-       ```
-      SELECT 
+ ```
+     SELECT 
       track,
 	  sum(views)as total_views,
 	  sum(likes)as total_likes
-     FROM spotify
-    where official_video = TRUE
-    group by track
-    order by 2 desc
+      FROM spotify
+      where official_video = TRUE
+      group by track
+      order by 2 desc
  ```
 **4. For each album, calculate the total views of all associated tracks.**
    ```
