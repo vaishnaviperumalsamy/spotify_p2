@@ -141,7 +141,7 @@ order by 1;
     order by 3 DESC;
  ```
 **5. Retrieve the track names that have been streamed on Spotify more than YouTube.**
-    ```
+```
    select * from
    (select track,
        coalesce(sum(case when most_played_on ='youtube' then stream end),0) as streamed_on_youtube,
@@ -151,7 +151,7 @@ order by 1;
    ) as t1
    where streamed_on_spotify > streamed_on_youtube
    and streamed_on_youtube <> 0
-    ```
+```
 
 ### Advanced Level
 **1. Find the top 3 most-viewed tracks for each artist using window functions.**
