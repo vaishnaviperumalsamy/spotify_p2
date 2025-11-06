@@ -74,12 +74,12 @@ select
 where stream > 1000000000;
  ```
 **2. List all albums along with their respective artists.**
-    ```
-    select distinct album, artist
-    from spotify
-    order by 1;
-    ```
-**3. Get the total number of comments for tracks where `licensed = TRUE`.**
+   ```
+select distinct album, artist
+from spotify
+order by 1;
+```
+**3. Get the total number of comments for tracks where licensed = TRUE.**
    ```
     SELECT SUM(comments) AS total_comments
     FROM spotify
