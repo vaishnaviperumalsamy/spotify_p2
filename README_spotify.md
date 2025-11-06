@@ -67,16 +67,37 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
 ## 15 Practice Questions
 
 ### Easy Level
-1. Retrieve the names of all tracks that have more than 1 billion streams.
+**1. Retrieve the names of all tracks that have more than 1 billion streams.**
  ```
 select 
  track from spotify
 where stream > 1000000000;
  ```
-3. List all albums along with their respective artists.
-4. Get the total number of comments for tracks where `licensed = TRUE`.
-5. Find all tracks that belong to the album type `single`.
-6. Count the total number of tracks by each artist.
+**2. List all albums along with their respective artists.**
+    ```
+    select distinct album, artist
+    from spotify
+    order by 1;
+     ```
+**3. Get the total number of comments for tracks where `licensed = TRUE`.**
+   ```
+    SELECT SUM(comments) AS total_comments
+    FROM spotify
+    WHERE licensed = TRUE;
+     ```
+**4. Find all tracks that belong to the album type `single`.**
+ ```
+   select track from spotify
+   where album_type = 'single';
+     ```
+**5. Count the total number of tracks by each artist.**
+   ```
+      select artist,
+      count(track) as total_no_songs
+      from spotify
+      group by artist
+      order by 2 desc;
+     ```
 
 ### Medium Level
 1. Calculate the average danceability of tracks in each album.
