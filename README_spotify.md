@@ -155,7 +155,31 @@ order by 1;
 
 ### Advanced Level
 1. Find the top 3 most-viewed tracks for each artist using window functions.
+   ```
+   with ranking_artist
+   as	
+	(SELECT 
+        artist,
+        track,
+        sum(views) as total_views,
+        dense_RANK() OVER (PARTITION BY artist ORDER BY sum(views) DESC) AS rank
+    FROM spotify
+   group by 1,2
+   order by 1,3 desc
+   )
+   select * from ranking_artist
+   where rank <=3
+   ```
 2. Write a query to find tracks where the liveness score is above the average.
+   ```
+   select track,
+       artist,
+	   liveness
+    from spotify
+   where liveness > ( select avg(liveness) from spotify )
+   order by liveness desc
+   ```
+
 3. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.**
 ```sql
 WITH cte
@@ -174,7 +198,16 @@ FROM cte
 ORDER BY 2 DESC
 ```
    
-5. Find tracks where the energy-to-liveness ratio is greater than 1.2.
+4. Find tracks where the energy-to-liveness ratio is greater than 1.2.
+   ```
+   select 
+     track,
+	 energy,
+	 liveness,
+	 energy/liveness as energy_liveness_ratio
+   from spotify
+   where (energy / liveness) > 1.2;
+```
 6. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
 ```sql
 select
