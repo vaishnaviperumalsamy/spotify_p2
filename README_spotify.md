@@ -100,7 +100,7 @@ order by 1;
  ```
 
 ### Medium Level
-1. Calculate the average danceability of tracks in each album.
+**1. Calculate the average danceability of tracks in each album.**
    ```
    select 
         album,
@@ -109,7 +109,7 @@ order by 1;
    group by 1
    order by 2 desc
    ```
-2. Find the top 5 tracks with the highest energy values.
+**2. Find the top 5 tracks with the highest energy values.**
    ```
    select
      track, 
@@ -119,9 +119,9 @@ order by 1;
    order by 2 desc
    limit 5;
     ```
-3. List all tracks along with their views and likes where `official_video = TRUE`.
-    ```
-    SELECT 
+**3. List all tracks along with their views and likes where official_video = TRUE.**
+       ```
+      SELECT 
       track,
 	  sum(views)as total_views,
 	  sum(likes)as total_likes
@@ -129,18 +129,18 @@ order by 1;
     where official_video = TRUE
     group by track
     order by 2 desc
-    ```
-4. For each album, calculate the total views of all associated tracks.
+ ```
+**4. For each album, calculate the total views of all associated tracks.**
    ```
-   select
+    select
     album,
     track,
 	sum(views) as total_views
-   from spotify
-   group by 1,2
-   order by 3 DESC;
+    from spotify
+    group by 1,2
+    order by 3 DESC;
     ```
-5. Retrieve the track names that have been streamed on Spotify more than YouTube.
+**5. Retrieve the track names that have been streamed on Spotify more than YouTube.**
     ```
    select * from
    (select track,
@@ -154,7 +154,7 @@ order by 1;
     ```
 
 ### Advanced Level
-1. Find the top 3 most-viewed tracks for each artist using window functions.
+**1. Find the top 3 most-viewed tracks for each artist using window functions.**
    ```
    with ranking_artist
    as	
@@ -170,7 +170,7 @@ order by 1;
    select * from ranking_artist
    where rank <=3
    ```
-2. Write a query to find tracks where the liveness score is above the average.
+**2. Write a query to find tracks where the liveness score is above the average.**
    ```
    select track,
        artist,
@@ -180,7 +180,7 @@ order by 1;
    order by liveness desc
    ```
 
-3. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.**
+**3. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.**
 ```sql
 WITH cte
 AS
@@ -198,7 +198,7 @@ FROM cte
 ORDER BY 2 DESC
 ```
    
-4. Find tracks where the energy-to-liveness ratio is greater than 1.2.
+**4. Find tracks where the energy-to-liveness ratio is greater than 1.2.**
    ```
    select 
      track,
@@ -208,7 +208,7 @@ ORDER BY 2 DESC
    from spotify
    where (energy / liveness) > 1.2;
 ```
-6. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
+**5. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.**
 ```sql
 select
      artist,
